@@ -51,7 +51,11 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     //Android lifecycles
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    def lifecycle_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // define a BOM and its version
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
@@ -70,6 +74,11 @@ dependencies {
     // facebook skeleton loading
     def shimmer_version = "0.5.0"
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+    // Jetpack Navigation
+    def nav_version = "2.5.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

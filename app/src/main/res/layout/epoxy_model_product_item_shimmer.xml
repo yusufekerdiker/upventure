@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/shimmerLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <include layout="@layout/epoxy_model_product_item" />
-
-</com.facebook.shimmer.ShimmerFrameLayout>

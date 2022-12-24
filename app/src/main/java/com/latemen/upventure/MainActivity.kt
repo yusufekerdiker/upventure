@@ -1,55 +1,47 @@
 package com.latemen.upventure
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
-import coil.load
-import com.google.android.material.snackbar.Snackbar
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.latemen.upventure.databinding.ActivityMainBinding
-import com.latemen.upventure.hilt.service.ProductsService
-import com.latemen.upventure.model.domain.Product
-import com.latemen.upventure.model.mapper.ProductMapper
-import com.latemen.upventure.model.network.NetworkProduct
+import com.latemen.upventure.model.ui.UiProduct
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Response
-import javax.inject.Inject
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var productsService: ProductsService
-
     private lateinit var binding: ActivityMainBinding
 
-    @Inject
-    lateinit var productMapper: ProductMapper
+    private val viewModel: MainActivityViewModel by lazy {
+        ViewModelProvider(this)[MainActivityViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val controller = ProductEpoxyController()
+        val controller = UiProductEpoxyController(viewModel)
         binding.epoxyRecyclerView.setController(controller)
         controller.setData(emptyList())
 
-        lifecycleScope.launchWhenStarted {
-
-            val response: Response<List<NetworkProduct>> = productsService.getAllProducts()
-            val domainProducts: List<Product> = response.body()?.map {
-                productMapper.buildFrom(networkProduct = it)
-            } ?: emptyList()
-
-            controller.setData(domainProducts)
-
-            if (domainProducts.isEmpty()) {
-                Snackbar.make(binding.root, "Failed to fetch", Snackbar.LENGTH_LONG).show()
+        combine(
+            viewModel.store.stateFlow.map { it.products },
+            viewModel.store.stateFlow.map { it.favoriteProductIds }
+        ) { listOfProducts, setOfFavoriteIds ->
+            listOfProducts.map { product ->
+                UiProduct(product = product, isFavorite = setOfFavoriteIds.contains(product.id))
             }
+        }.distinctUntilChanged().asLiveData().observe(this) { uiProducts ->
+            controller.setData(uiProducts)
         }
+
+        viewModel.refreshProducts()
     }
 
     /*    private fun refreshData() {
