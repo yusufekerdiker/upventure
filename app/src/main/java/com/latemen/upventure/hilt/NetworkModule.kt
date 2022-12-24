@@ -1,6 +1,7 @@
 package com.latemen.upventure.hilt
 
 import com.latemen.upventure.MainActivity
+import com.latemen.upventure.hilt.service.ProductsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,8 +39,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesProductService(retrofit: Retrofit): MainActivity.ProductService {
-        return retrofit.create(MainActivity.ProductService::class.java)
+    fun providesProductService(retrofit: Retrofit): ProductsService {
+        return retrofit.create(ProductsService::class.java)
     }
 
 }

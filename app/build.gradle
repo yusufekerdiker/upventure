@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -54,6 +58,14 @@ dependencies {
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    //Coil for image loading effect
+    def coil_version = "2.2.2"
+    implementation "io.coil-kt:coil:$coil_version"
+
+    //Epoxy
+    def epoxy_version = "5.1.1"
+    implementation "com.airbnb.android:epoxy:$epoxy_version"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
