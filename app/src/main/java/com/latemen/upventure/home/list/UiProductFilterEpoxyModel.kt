@@ -1,6 +1,7 @@
-package com.latemen.upventure
+package com.latemen.upventure.home.list
 
 import androidx.core.content.ContextCompat
+import com.latemen.upventure.R
 import com.latemen.upventure.databinding.EpoxyModelProductFilterBinding
 import com.latemen.upventure.epoxy.ViewBindingKotlinModel
 import com.latemen.upventure.model.domain.Filter
@@ -16,9 +17,9 @@ data class UiProductFilterEpoxyModel(
         filterNameTextView.text = uiFilter.filter.displayText
 
         val cardBackgroundColorResId = if (uiFilter.isSelected) {
-            com.google.android.material.R.color.material_dynamic_primary30
+            com.google.android.material.R.color.material_dynamic_primary50
         } else {
-            com.google.android.material.R.color.material_dynamic_primary60
+            com.google.android.material.R.color.material_dynamic_primary70
         }
         root.setCardBackgroundColor(ContextCompat.getColor(root.context, cardBackgroundColorResId))
     }

@@ -11,10 +11,9 @@
         android:layout_height="match_parent"
         android:clipChildren="false"
         android:orientation="vertical"
-        android:paddingTop="12dp"
         android:paddingBottom="24dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="7"
-        tools:listitem="@layout/epoxy_model_product_item" />
+        tools:listitem="@layout/epoxy_model_cart_product_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

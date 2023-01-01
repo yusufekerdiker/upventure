@@ -7,13 +7,19 @@
 
     <fragment
         android:id="@+id/productsListFragment"
-        android:name="com.latemen.upventure.ProductsListFragment"
+        android:name="com.latemen.upventure.home.list.ProductsListFragment"
         android:label="Products list"
         tools:layout="@layout/fragment_products_list" />
 
     <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.latemen.upventure.home.cart.CartFragment"
+        android:label="Your cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
         android:id="@+id/profileFragment"
-        android:name="com.latemen.upventure.ProfileFragment"
+        android:name="com.latemen.upventure.home.profile.ProfileFragment"
         android:label="My Account"
         tools:layout="@layout/fragment_profile" />
 

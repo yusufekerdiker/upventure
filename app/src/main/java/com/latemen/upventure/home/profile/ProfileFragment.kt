@@ -1,10 +1,9 @@
-package com.latemen.upventure
+package com.latemen.upventure.home.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.latemen.upventure.R
 import com.latemen.upventure.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {

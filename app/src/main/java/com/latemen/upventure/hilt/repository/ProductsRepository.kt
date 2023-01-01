@@ -1,4 +1,4 @@
-package com.latemen.upventure
+package com.latemen.upventure.hilt.repository
 
 
 import com.latemen.upventure.hilt.service.ProductsService

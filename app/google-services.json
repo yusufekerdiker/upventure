@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303093812390",
+    "project_id": "upventure-acm431",
+    "storage_bucket": "upventure-acm431.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303093812390:android:ade58636ef4fdfbe1e7867",
+        "android_client_info": {
+          "package_name": "com.latemen.upventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303093812390-gai75iq07ah0fous5olib38a362ra1j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyKDODx4qDzgVbrnXm2_h3y7jWfuw7NRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303093812390-gai75iq07ah0fous5olib38a362ra1j7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

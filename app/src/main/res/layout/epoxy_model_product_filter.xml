@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    app:cardBackgroundColor="@color/material_dynamic_primary60"
+    app:cardBackgroundColor="@color/material_dynamic_primary70"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="0dp"
-    app:strokeColor="@color/material_dynamic_primary30"
-    app:strokeWidth="1dp">
+    app:strokeColor="@color/material_dynamic_primary50"
+    app:strokeWidth="2dp">
 
     <TextView
         android:id="@+id/filterNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:includeFontPadding="false"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:textSize="16sp"
         tools:text="jewelry" />
 
 </com.google.android.material.card.MaterialCardView>

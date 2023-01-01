@@ -1,19 +1,20 @@
-package com.latemen.upventure
+package com.latemen.upventure.home.list
 
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import coil.load
+import com.latemen.upventure.R
 import com.latemen.upventure.databinding.EpoxyModelProductItemBinding
 import com.latemen.upventure.epoxy.ViewBindingKotlinModel
-import com.latemen.upventure.model.domain.Product
 import com.latemen.upventure.model.ui.UiProduct
 import java.text.NumberFormat
 
 data class UiProductEpoxyModel(
     val uiProduct: UiProduct?,
     val onFavoriteIconClicked: (Int) -> Unit,
-    val onUiProductClicked: (Int) -> Unit
+    val onUiProductClicked: (Int) -> Unit,
+    val onAddToCartClicked: (Int) -> Unit
 ) : ViewBindingKotlinModel<EpoxyModelProductItemBinding>(R.layout.epoxy_model_product_item) {
 
     private val currencyFormatter = NumberFormat.getCurrencyInstance()
@@ -44,6 +45,12 @@ data class UiProductEpoxyModel(
             favoriteImageView.setIconResource(imageRes)
             favoriteImageView.setOnClickListener {
                 onFavoriteIconClicked(uiProduct.product.id)
+            }
+
+            // In cart status
+            inCartView.isVisible = uiProduct.isInCart
+            addToCartButton.setOnClickListener {
+                onAddToCartClicked(uiProduct.product.id)
             }
 
             // Load our image
