@@ -7,7 +7,7 @@ data class NetworkProduct(
     val image: String,
     val price: Double,
     val rating: Rating,
-    var title: String
+    val title: String
 ) {
     data class Rating(
         val count: Int,

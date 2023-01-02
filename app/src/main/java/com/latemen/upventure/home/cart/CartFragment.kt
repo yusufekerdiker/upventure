@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import com.latemen.upventure.databinding.FragmentCartBinding
+import com.latemen.upventure.home.cart.epoxy.CartFragmentEpoxyController
 import com.latemen.upventure.model.ui.UiProduct
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -29,6 +30,7 @@ class CartFragment: Fragment() {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

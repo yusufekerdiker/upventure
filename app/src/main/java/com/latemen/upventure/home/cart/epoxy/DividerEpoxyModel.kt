@@ -4,7 +4,6 @@ import android.view.ViewGroup
 import androidx.annotation.Dimension
 import androidx.annotation.Dimension.Companion.PX
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updatePadding
 import com.latemen.upventure.R
 import com.latemen.upventure.databinding.EpoxyModelDividerBinding
 import com.latemen.upventure.epoxy.ViewBindingKotlinModel

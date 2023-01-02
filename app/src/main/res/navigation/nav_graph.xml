@@ -23,4 +23,10 @@
         android:label="My Account"
         tools:layout="@layout/fragment_profile" />
 
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.latemen.upventure.home.messages.MessagesFragment"
+        android:label="Your Messages"
+        tools:layout="@layout/fragment_messages" />
+
 </navigation>

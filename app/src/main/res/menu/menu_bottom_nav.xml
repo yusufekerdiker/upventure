@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/productsListFragment"
-        android:icon="@drawable/round_dashboard_24"
+        android:icon="@drawable/round_interests_24"
         android:title="Products" />
     <item
         android:id="@+id/cartFragment"
@@ -12,4 +12,9 @@
         android:id="@+id/profileFragment"
         android:icon="@drawable/round_account_box_24"
         android:title="Profile" />
+
+    <item
+        android:id="@+id/messagesFragment"
+        android:icon="@drawable/round_groups_3_24"
+        android:title="Messages" />
 </menu>

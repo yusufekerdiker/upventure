@@ -8,18 +8,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import com.latemen.upventure.databinding.FragmentProductsListBinding
-import com.latemen.upventure.model.ui.UiFilter
-import com.latemen.upventure.model.ui.UiProduct
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProductsListFragment : Fragment() {
+
     private var _binding: FragmentProductsListBinding? = null
     private val binding by lazy { _binding!! }
+
     private val viewModel: ProductsListViewModel by viewModels()
+
+    @Inject
+    lateinit var uiStateGenerator: ProductsListFragmentUiStateGenerator
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,8 +33,10 @@ class ProductsListFragment : Fragment() {
         _binding = FragmentProductsListBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val controller = UiProductEpoxyController(viewModel)
         binding.epoxyRecyclerView.setController(controller)
 
@@ -37,28 +44,14 @@ class ProductsListFragment : Fragment() {
             viewModel.uiProductListReducer.reduce(viewModel.store),
             viewModel.store.stateFlow.map { it.productFilterInfo },
         ) { uiProducts, productFilterInfo ->
-
-            if (uiProducts.isEmpty()) {
-                return@combine ProductsListFragmentUiState.Loading
-            }
-
-            val uiFilters = productFilterInfo.filters.map { filter ->
-                UiFilter(
-                    filter = filter,
-                    isSelected = productFilterInfo.selectedFilter?.equals(filter) == true
-                )
-            }.toSet()
-            val filteredProducts = if (productFilterInfo.selectedFilter == null) {
-                uiProducts
-            } else {
-                uiProducts.filter { it.product.category == productFilterInfo.selectedFilter.value }
-            }
-            return@combine ProductsListFragmentUiState.Success(uiFilters, filteredProducts)
+            uiStateGenerator.generate(uiProducts, productFilterInfo)
         }.distinctUntilChanged().asLiveData().observe(viewLifecycleOwner) { uiState ->
             controller.setData(uiState)
         }
+
         viewModel.refreshProducts()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

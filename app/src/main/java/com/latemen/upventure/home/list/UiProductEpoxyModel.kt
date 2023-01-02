@@ -63,3 +63,7 @@ data class UiProductEpoxyModel(
         } ?: shimmerLayout.startShimmer()
     }
 }
+
+//            productImageView.resources.getColor(android.R.color.transparent)
+//            productImageView.setBackgroundColor(Color.parseColor("#80000000"))
+//            productImageView.setBackgroundColor(getResources().getColor(android.R.color.transparent))

@@ -1,4 +1,4 @@
-package com.latemen.upventure.home.cart
+package com.latemen.upventure.home.cart.epoxy
 
 import android.view.ViewGroup
 import androidx.annotation.Dimension
@@ -10,8 +10,7 @@ import com.latemen.upventure.databinding.EpoxyModelCartProductItemBinding
 import com.latemen.upventure.epoxy.VerticalSpaceEpoxyModel
 import com.latemen.upventure.epoxy.ViewBindingKotlinModel
 import com.latemen.upventure.extensions.toPx
-import com.latemen.upventure.home.cart.epoxy.CartEmptyEpoxyModel
-import com.latemen.upventure.home.cart.epoxy.DividerEpoxyModel
+import com.latemen.upventure.home.cart.CartFragment
 import com.latemen.upventure.model.ui.UiProduct
 
 class CartFragmentEpoxyController : TypedEpoxyController<CartFragment.UiState>() {
@@ -78,6 +77,12 @@ class CartFragmentEpoxyController : TypedEpoxyController<CartFragment.UiState>()
 
             root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 setMargins(horizontalMargin, 0, horizontalMargin, 0)
+            }
+
+            quantityView.apply {
+                quantityTextView.text = 9.toString()
+                minusImageView.setOnClickListener {  }
+                plusImageView.setOnClickListener {  }
             }
         }
     }
