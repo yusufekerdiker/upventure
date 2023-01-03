@@ -5,6 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/swipeToDismissTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_rounded_12"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:text="Swipe to delete"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/productImageView"
+        app:layout_constraintEnd_toEndOf="@id/productImageView"
+        app:layout_constraintStart_toStartOf="@id/productImageView"
+        app:layout_constraintTop_toTopOf="@id/productImageView" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImageView"
         android:layout_width="0dp"
@@ -36,6 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:textSize="16sp"
@@ -51,19 +67,35 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="?selectableItemBackgroundBorderless"
-        android:padding="8dp"
+        android:padding="4dp"
         android:tint="@color/material_dynamic_primary50"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/totalProductPriceTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/twotone_delete_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/totalProductPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:constraintSet="@+id/deleteIconImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteIconImageView"
+        app:layout_constraintEnd_toEndOf="@+id/deleteIconImageView"
+        app:layout_constraintTop_toTopOf="@+id/deleteIconImageView"
+        tools:text="$109.95" />
 
     <include
         android:id="@+id/quantityView"
         layout="@layout/layout_quantity_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/deleteIconImageView"
+        app:layout_constraintBottom_toBottomOf="@id/totalProductPriceTextView"
         app:layout_constraintStart_toStartOf="@id/productTitleTextView"
-        app:layout_constraintTop_toTopOf="@id/deleteIconImageView" />
+        app:layout_constraintTop_toTopOf="@id/totalProductPriceTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

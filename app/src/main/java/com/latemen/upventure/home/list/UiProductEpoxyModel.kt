@@ -9,6 +9,7 @@ import com.latemen.upventure.databinding.EpoxyModelProductItemBinding
 import com.latemen.upventure.epoxy.ViewBindingKotlinModel
 import com.latemen.upventure.model.ui.UiProduct
 import java.text.NumberFormat
+import kotlin.math.roundToInt
 
 data class UiProductEpoxyModel(
     val uiProduct: UiProduct?,
@@ -20,6 +21,8 @@ data class UiProductEpoxyModel(
     private val currencyFormatter = NumberFormat.getCurrencyInstance()
 
     override fun EpoxyModelProductItemBinding.bind() {
+        // todo
+//        swipeToFavoriteTextView.translationX = 0f
         shimmerLayout.isVisible = uiProduct == null
         cardView.isInvisible = uiProduct == null
 
@@ -60,6 +63,8 @@ data class UiProductEpoxyModel(
                     productImageViewLoadingProgressBar.isGone = true
                 }
             }
+            ratingIndicator.progress = (uiProduct.product.rating.value * 10).roundToInt()
+            ratingTextView.text = "${uiProduct.product.rating.value}"
         } ?: shimmerLayout.startShimmer()
     }
 }

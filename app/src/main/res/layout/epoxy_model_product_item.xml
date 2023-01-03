@@ -25,6 +25,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+<!--            todo-->
+<!--            <TextView
+                android:id="@+id/swipeToFavoriteTextView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/background_rounded_12"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:gravity="center"
+                android:text="Swipe to favorite"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@id/productImageView"
+                app:layout_constraintEnd_toEndOf="@id/productImageView"
+                app:layout_constraintStart_toStartOf="@id/productImageView"
+                app:layout_constraintTop_toTopOf="@id/productImageView" />-->
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/productImageView"
                 android:layout_width="0dp"
@@ -89,6 +105,33 @@
                 app:layout_constraintEnd_toEndOf="@id/productTitleTextView"
                 app:layout_constraintStart_toStartOf="@id/productTitleTextView"
                 app:layout_constraintTop_toBottomOf="@id/productTitleTextView" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/ratingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:max="50"
+                android:progress="42"
+                app:indicatorSize="36dp"
+                app:layout_constraintBottom_toBottomOf="@id/productPriceTextView"
+                app:layout_constraintEnd_toStartOf="@id/inCartView"
+                app:layout_constraintStart_toEndOf="@id/productPriceTextView"
+                app:layout_constraintTop_toTopOf="@id/productPriceTextView"
+                app:layout_goneMarginEnd="8dp"
+                app:trackColor="@color/material_dynamic_primary70"
+                app:trackCornerRadius="@dimen/corner_radius" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ratingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/ratingIndicator"
+                app:layout_constraintEnd_toEndOf="@id/ratingIndicator"
+                app:layout_constraintStart_toStartOf="@id/ratingIndicator"
+                app:layout_constraintTop_toTopOf="@id/ratingIndicator"
+                tools:text="4.2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/productPriceTextView"

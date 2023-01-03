@@ -4,12 +4,16 @@ import androidx.lifecycle.ViewModel
 import com.latemen.upventure.redux.ApplicationState
 import com.latemen.upventure.redux.Store
 import com.latemen.upventure.redux.reducer.UiProductListReducer
+import com.latemen.upventure.redux.updater.UiProductFavoriteUpdater
+import com.latemen.upventure.redux.updater.UiProductInCartUpdater
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class CartFragmentViewModel @Inject constructor(
     val store: Store<ApplicationState>,
-    val uiProductListReducer: UiProductListReducer
+    val uiProductListReducer: UiProductListReducer,
+    val uiProductFavoriteUpdater: UiProductFavoriteUpdater,
+    val uiProductInCartUpdater: UiProductInCartUpdater
 ): ViewModel() {
 }

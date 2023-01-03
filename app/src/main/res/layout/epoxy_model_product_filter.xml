@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/material_dynamic_primary70"
+    app:cardBackgroundColor="@color/material_dynamic_primary80"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="0dp"
-    app:strokeColor="@color/material_dynamic_primary50"
+    app:strokeColor="@color/material_dynamic_primary40"
     app:strokeWidth="2dp">
 
     <TextView
         android:id="@+id/filterNameTextView"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
