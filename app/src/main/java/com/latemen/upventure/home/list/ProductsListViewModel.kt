@@ -1,7 +1,9 @@
 package com.latemen.upventure.home.list
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.latemen.upventure.hilt.repository.ProductsRepository
 import com.latemen.upventure.model.domain.Filter
 import com.latemen.upventure.model.domain.Product
@@ -12,6 +14,8 @@ import com.latemen.upventure.redux.updater.UiProductFavoriteUpdater
 import com.latemen.upventure.redux.updater.UiProductInCartUpdater
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.Response
+import retrofit2.http.POST
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,6 +27,14 @@ class ProductsListViewModel @Inject constructor(
     private val productsRepository: ProductsRepository,
     private val filterGenerator: FilterGenerator
 ) : ViewModel() {
+
+    var myResponse: MutableLiveData<Response<Product>> = MutableLiveData()
+/*    fun pushPost(post: POST) {
+        viewModelScope.launch {
+            val response = productsRepository.pushPost(post)
+            myResponse.value = response
+        }
+    }*/
 
     fun refreshProducts() = viewModelScope.launch {
         if (store.read { it.products }.isNotEmpty()) return@launch

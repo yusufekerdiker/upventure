@@ -6,7 +6,9 @@ import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.TypedEpoxyController
 import com.latemen.upventure.extensions.toPx
 import com.latemen.upventure.model.domain.Filter
+import com.latemen.upventure.model.domain.Product
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
 import java.util.UUID
 
 class UiProductEpoxyController(
@@ -14,6 +16,11 @@ class UiProductEpoxyController(
 ): TypedEpoxyController<ProductsListFragmentUiState>() {
 
     override fun buildModels(data: ProductsListFragmentUiState?) {
+
+
+/*        val myPost = Post("men's clothing","deneme", 12321, "deneme.png", 24.95, "Deneme123")
+        viewModel.pushPost(myPost)*/
+
         when (data) {
             is ProductsListFragmentUiState.Success -> {
                 val uiFilterModels = data.filters.map { uiFilter ->
