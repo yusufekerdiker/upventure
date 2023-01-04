@@ -28,13 +28,13 @@ class ProductsListViewModel @Inject constructor(
     private val filterGenerator: FilterGenerator
 ) : ViewModel() {
 
-    var myResponse: MutableLiveData<Response<Product>> = MutableLiveData()
-/*    fun pushPost(post: POST) {
-        viewModelScope.launch {
-            val response = productsRepository.pushPost(post)
-            myResponse.value = response
-        }
-    }*/
+    /*    val myResponse: MutableLiveData<Response<Product>> = MutableLiveData()
+        fun pushProduct(product: Product) {
+            viewModelScope.launch {
+                val response = productsRepository.pushProduct(product)
+                myResponse.value = response
+            }
+        }*/
 
     fun refreshProducts() = viewModelScope.launch {
         if (store.read { it.products }.isNotEmpty()) return@launch
